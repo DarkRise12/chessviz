@@ -2,15 +2,15 @@
 
 
 int main(){
-printf("  a b c d e f g h  ");
-printf("8 л к с к ф с к л 8");
-printf("7 п п п п п п п п 7");
-printf("6                 6");
-printf("5                 5");
-printf("4                 4");
-printf("3                 3");
-printf("2 п п п п п п п п 2");
-printf("1 л к с к ф с к л 1");
-printf("  a b c d e f g h  ");
+printf("  a b c d e f g h \n");
+printf("8 r n b q k b n r 8\n");
+printf("7 p p p p p p p p 7\n");
+printf("6                 6\n");
+printf("5                 5\n");
+printf("4                 4\n");
+printf("3                 3\n");
+printf("2 P P P P P P P P 2\n");
+printf("1 R N B Q K B N R 1\n");
+printf("  a b c d e f g h  \n");
 
 }
