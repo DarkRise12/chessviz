@@ -1,10 +1,7 @@
 #include <stdio.h>
-
-
-int main(){
+void board(char a[9][9]){
 
   int i,j;
-char  a[9][9];
  for (i=0;i<9;i++)
     {
         for (j=0;j<9;j++)
@@ -65,11 +62,4 @@ char  a[9][9];
     a[7][6]='p';
     a[7][7]='p';
     a[7][8]='p';
-
-    for (i=0;i<=8;i++)
-     {for (j=0;j<=8;j++)
-       printf (" %c",a[i][j]);
-          printf("\n");}
-    
 }
-
