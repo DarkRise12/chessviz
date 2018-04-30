@@ -1,5 +1,6 @@
 #include <stdio.h>
-
+#include <string.h>
+#include "board_print.h"
 void board(char a[9][9]){
 
  for (int i=0;i<9;i++)
@@ -62,4 +63,53 @@ void board(char a[9][9]){
     a[7][6]='p';
     a[7][7]='p';
     a[7][8]='p';
+}
+
+void move(char a[9][9]){
+    int j,s,k,b;
+    FILE *fw = fopen("log.txt","wt");
+    char str[5];
+    char temp;
+
+    int m = 8;
+    char buk[m]={'a','b','c','d','e','f','g','h'};
+    char num[m]={'1','2','3','4','5','6','7','8'};
+
+    while(1){
+      scanf("%s",str);
+      if(strcmp(str,"end")==0){
+	printf("Stop!");
+	break;}
+      fprintf(fw,"%s\n",str);
+
+      for(int i = 0; i < m;i++)
+	{
+	  if(str[0]==buk[i])
+	     j = i + 1;
+	  if(str[1]==num[i])
+	     s = 7 - i;
+	  if(str[3]==buk[i])
+	     k = 1 + i;
+	  if(str[4]==num[i])
+	     b = 7 - i;
+	}
+       if(!(j < 9 && j >= 1 && s < 9 && s >= 1 && k < 9 && k >= 1 && b < 9 && b >= 1))
+            printf("\nERROR\n");
+        else
+        {
+            temp = a[s][j];
+            a[s][j] = a[b][k];
+            a[b][k] = temp;
+            for(int p = 0; p < 9; p++)
+            {
+                for(int z = 0; z < 9; z++)
+                fprintf(fw, "%c ", a[p][z]);
+                fprintf(fw, "\n");
+            }
+        j = 10; s = 10; k = 10; b = 10;
+        }
+
+        print(a);
+    }
+    fclose(fw);
 }

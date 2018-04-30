@@ -7,5 +7,6 @@ int main()
   char a[9][9];
   board(a);
   print(a);
+  move(a);
   return 0;
 }
