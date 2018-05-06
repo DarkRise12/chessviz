@@ -19,14 +19,14 @@ void board(char a[9][9]){
      a[0][7]='g';
      a[0][8]='h';
 
-    a[1][0]='8';
-    a[2][0]='7';
-    a[3][0]='6';
-    a[4][0]='5';
-    a[5][0]='4';
-    a[6][0]='3';
-    a[7][0]='2';
-    a[8][0]='1';
+    a[1][0]='1';
+    a[2][0]='2';
+    a[3][0]='3';
+    a[4][0]='4';
+    a[5][0]='5';
+    a[6][0]='6';
+    a[7][0]='7';
+    a[8][0]='8';
 
     a[1][1]='R';
     a[1][2]='N';
@@ -66,50 +66,253 @@ void board(char a[9][9]){
 }
 
 void move(char a[9][9]){
-    int j,s,k,b;
-    FILE *fw = fopen("log.txt","wt");
-    char str[5];
-    char temp;
-
-    int m = 8;
-    char buk[m]={'a','b','c','d','e','f','g','h'};
-    char num[m]={'1','2','3','4','5','6','7','8'};
-
-    while(1){
-      scanf("%s",str);
+	char str[5];
+	FILE *fw = fopen("log.txt","wt");
+	char temp;
+	char buk[]={'a','b','c','d','e','f','g','h'};
+    	char num[]={'1','2','3','4','5','6','7','8'};
+	while(1){
+		 scanf("%s",str);
       if(strcmp(str,"end")==0){
-	printf("Stop!");
-	break;}
-      fprintf(fw,"%s\n",str);
-
-      for(int i = 0; i < m;i++)
-	{
-	  if(str[0]==buk[i])
-	     j = i + 1;
-	  if(str[1]==num[i])
-	     s = 7 - i;
-	  if(str[3]==buk[i])
-	     k = 1 + i;
-	  if(str[4]==num[i])
-	     b = 7 - i;
-	}
-       if(!(j < 9 && j >= 1 && s < 9 && s >= 1 && k < 9 && k >= 1 && b < 9 && b >= 1))
-            printf("\nERROR\n");
-        else
-        {
-            temp = a[s][j];
-            a[s][j] = a[b][k];
-            a[b][k] = temp;
-            for(int p = 0; p < 9; p++)
+		printf("Stop!");
+		break;}
+	  fprintf(fw,"%s\n",str);
+		for(int z; z = 1; z++){
+			if(str[0]==buk[z])
+			break;
+			else
+			{printf("Stop!");
+			break;}
+		}
+		if(z == 1){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][1];
+					a[2][1] = a[3][1];
+					a[3][1] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][1];
+					a[2][1] = a[4][1];
+					a[4][1] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][1];
+					a[7][1] = a[6][1];
+					a[6][1] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][1];
+					a[7][1] = a[5][1];
+					a[5][1] = temp;
+				}
+													
+			}
+		}
+    	if(z == 2){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][2];
+					a[2][2] = a[3][2];
+					a[3][2] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][2];
+					a[2][2] = a[4][2];
+					a[4][2] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][2];
+					a[7][2] = a[6][2];
+					a[6][2] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][2];
+					a[7][2] = a[5][2];
+					a[5][2] = temp;
+				}
+													
+			}
+		}
+    	if(z == 3){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][3];
+					a[2][3] = a[3][3];
+					a[3][3] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][3];
+					a[2][3] = a[4][3];
+					a[4][3] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][3];
+					a[7][3] = a[6][3];
+					a[6][3] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][3];
+					a[7][3] = a[5][3];
+					a[5][3] = temp;
+				}
+													
+			}
+		}
+		if(z == 4){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][4];
+					a[2][4] = a[3][4];
+					a[3][4] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][4];
+					a[2][4] = a[4][4];
+					a[4][4] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][4];
+					a[7][4] = a[6][4];
+					a[6][4] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][4];
+					a[7][4] = a[5][4];
+					a[5][4] = temp;
+				}
+													
+			}
+		}
+		if(z == 5){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][5];
+					a[2][5] = a[3][5];
+					a[3][5] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][5];
+					a[2][5] = a[4][5];
+					a[4][5] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][5];
+					a[7][5] = a[6][5];
+					a[6][5] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][5];
+					a[7][5] = a[5][5];
+					a[5][5] = temp;
+				}
+													
+			}
+		}
+		if(z == 6){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][6];
+					a[2][6] = a[3][6];
+					a[3][6] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][6];
+					a[2][6] = a[4][6];
+					a[4][6] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][6];
+					a[7][6] = a[6][6];
+					a[6][6] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][6];
+					a[7][6] = a[5][6];
+					a[5][6] = temp;
+				}
+													
+			}
+		}
+		if(z == 7){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][7];
+					a[2][7] = a[3][7];
+					a[3][7] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][7];
+					a[2][7] = a[4][7];
+					a[4][7] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][7];
+					a[7][7] = a[6][7];
+					a[6][7] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][7];
+					a[7][7] = a[5][7];
+					a[5][7] = temp;
+				}
+													
+			}
+		}
+		if(z == 8){
+			if(str[1] == '2'){
+				if(str[4] == '3'){
+					temp = a[2][8];
+					a[2][8] = a[3][8];
+					a[3][8] = temp;
+				}
+				if(str[4] == '4'){
+					temp = a[2][8];
+					a[2][8] = a[4][8];
+					a[4][8] = temp;
+				}
+													
+			}
+			if(str[1] == '7'){
+				if(str[4] == '6'){
+					temp = a[7][8];
+					a[7][8] = a[6][8];
+					a[6][8] = temp;
+				}
+				if(str[4] == '5'){
+					temp = a[7][8];
+					a[7][8] = a[5][8];
+					a[5][8] = temp;
+				}
+													
+			}
+		}
+	for(int p = 0; p < 9; p++)
             {
-                for(int z = 0; z < 9; z++)
-                fprintf(fw, "%c ", a[p][z]);
+                for(int l = 0; l < 9; z++)
+                fprintf(fw, "%c ", a[l][z]);
                 fprintf(fw, "\n");
             }
-        j = 10; s = 10; k = 10; b = 10;
-        }
-
-        print(a);
-    }
     fclose(fw);
-}
+	}
