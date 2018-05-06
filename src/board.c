@@ -70,19 +70,17 @@ void move(char a[9][9]){
 	FILE *fw = fopen("log.txt","wt");
 	char temp;
 	char buk[]={'a','b','c','d','e','f','g','h'};
-    	char num[]={'1','2','3','4','5','6','7','8'};
+	int z;
 	while(1){
 		 scanf("%s",str);
       if(strcmp(str,"end")==0){
 		printf("Stop!");
 		break;}
 	  fprintf(fw,"%s\n",str);
-		for(int z; z = 1; z++){
+		for(z = 1;z <= 8; z++){
 			if(str[0]==buk[z])
 			break;
-			else
-			{printf("Stop!");
-			break;}
+			
 		}
 		if(z == 1){
 			if(str[1] == '2'){
@@ -314,5 +312,6 @@ void move(char a[9][9]){
                 fprintf(fw, "%c ", a[l][z]);
                 fprintf(fw, "\n");
             }
+}
     fclose(fw);
 	}
