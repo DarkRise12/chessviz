@@ -4,7 +4,7 @@
 
 int main()
 {
-  char a[9][9];
+  char a[10][10];
   board(a);
   print(a);
   move(a);

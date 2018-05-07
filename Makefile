@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-Wall -Werror
-CCFLAGS=-Wall -Werror -c -fpermissive
+CCFLAGS=-Wall -Werror -c 
 
 all:prog
 

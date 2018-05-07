@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "board_print.h"
-void board(char a[9][9]){
+void board(char a[10][10]){
 
  for (int i=0;i<9;i++)
     {
@@ -65,52 +65,60 @@ void board(char a[9][9]){
     a[7][8]='p';
 }
 
-void move(char a[9][9]){
-	char str[5];
+void move(char a[10][10]){
+	char str[6];
 	FILE *fw = fopen("log.txt","wt");
 	char temp;
 	char buk[]={'a','b','c','d','e','f','g','h'};
 	int z;
+	int c = 0;
 	while(1){
 		 scanf("%s",str);
       if(strcmp(str,"end")==0){
 		printf("Stop!");
 		break;}
 	  fprintf(fw,"%s\n",str);
-		for(z = 1;z <= 8; z++){
-			if(str[0]==buk[z])
-			break;
-			
+	  
+		for(z = 0;z <= 8; z++){
+		  if(str[0]==buk[z]){
+		    c = z;
+		    break;}
+		  	
 		}
-		if(z == 1){
+		if(c == 0){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][1];
 					a[2][1] = a[3][1];
 					a[3][1] = temp;
-				}
+    					    }
+				
 				if(str[4] == '4'){
 					temp = a[2][1];
 					a[2][1] = a[4][1];
 					a[4][1] = temp;
+				       
 				}
-													
+																
 			}
 			if(str[1] == '7'){
 				if(str[4] == '6'){
 					temp = a[7][1];
 					a[7][1] = a[6][1];
 					a[6][1] = temp;
-				}
+					        
+					}
+				
 				if(str[4] == '5'){
 					temp = a[7][1];
 					a[7][1] = a[5][1];
-					a[5][1] = temp;
+					a[5][1] = temp;       
+					}
 				}
 													
-			}
+			
 		}
-    	if(z == 2){
+    	if(c == 1){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][2];
@@ -138,7 +146,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-    	if(z == 3){
+    	if(c == 2){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][3];
@@ -166,7 +174,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-		if(z == 4){
+		if(c == 3){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][4];
@@ -194,7 +202,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-		if(z == 5){
+		if(c == 4){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][5];
@@ -222,7 +230,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-		if(z == 6){
+		if(c == 5){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][6];
@@ -250,7 +258,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-		if(z == 7){
+		if(c == 6){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][7];
@@ -278,7 +286,7 @@ void move(char a[9][9]){
 													
 			}
 		}
-		if(z == 8){
+		if(c == 7){
 			if(str[1] == '2'){
 				if(str[4] == '3'){
 					temp = a[2][8];
@@ -306,12 +314,11 @@ void move(char a[9][9]){
 													
 			}
 		}
-	for(int p = 0; p < 9; p++)
-            {
-                for(int l = 0; l < 9; z++)
-                fprintf(fw, "%c ", a[l][z]);
-                fprintf(fw, "\n");
-            }
+
+		
+	print(a); 
 }
+	
+
     fclose(fw);
 	}
