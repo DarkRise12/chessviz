@@ -21,5 +21,12 @@ bin/main-test: build/main-test.o build/board.o build/board_print.o
 	gcc -Wall -Werror build/main-test.o build/board.o build/board_print.o -o bin/main-test
 
 .PHONY : clean
+
+bin:
+	mkdir bin
+
+build:
+	mkdir build
+
 clean:
 	rm -rf build/*.o
