@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "board_print.h"
-#include "live.h"
+
 
 void board(char a[10][10]){
 
@@ -67,32 +67,232 @@ void board(char a[10][10]){
     a[7][8]='p';
 }
 
-void move(char a[10][10]){
+void move(char a[10][10], char str[]){
 	char str[6];
+	int z,i,j;
+	char temp;
+	int num1 = 0;
+    int num2 = 0;
+    int buk1 = 0;
+    int buk2 = 0;
 	FILE *fw = fopen("log.txt","wt");
 
 	while(1){
-		 scanf("%s",str);
-      if(strcmp(str,"stop")==0){
-		printf("Stop!");
-		break;}
-	  fprintf(fw,"%s\n",str);
+        fprintf(fw,"%s\n",str);
 
-		if(str[0] == 'Q' || str[0] == 'q')
-		queen(a,str);
-		if(str[0] == 'K' || str[0] == 'k')
-		king(a,str);
-		if(str[0] == 'R' || str[0] == 'r')
-		rook(a,str);
-		if(str[0] == 'B' || str[0] == 'b')
-		bishop(a,str);
-		if(str[0] == 'N' || str[0] == 'n')
-		knight(a,str);
+		if(str[0] == 'Q' || str[0] == 'q'){
+            for(z = 0;z <= 8; z++){
+		  if(str[1]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+		}
+
+		if(str[0] == 'K' || str[0] == 'k'){
+            for(z = 1;z <= 8; z++){
+		  if(str[1]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+		}
+
+		if(str[0] == 'R' || str[0] == 'r'){
+            for(z = 0;z <= 8; z++){
+		  if(str[1]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+		}
+
+		if(str[0] == 'B' || str[0] == 'b'){
+            for(z = 0;z <= 8; z++){
+		  if(str[1]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+		}
+
+		if(str[0] == 'N' || str[0] == 'n'){
+            for(z = 0;z <= 8; z++){
+		  if(str[1]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+		}
+if(str[0] == 'a' || str[0] == 'b' || str[0] == 'c' || str[0] == 'd' || str[0] == 'e' || str[0] == 'f' || str[0] == 'g' || str[0] == 'h'){
+    for(z = 0;z <= 8; z++){
+		  if(str[0]==buk[z]){
+		    buk1 = z;
+		    break;}
+    }
+
+	for(z = 0;z <= 8; z++){
+		  if(str[2]==num[z]){
+		    num1 = z;
+		    break;}
+	}
+    for(z = 0;z <= 8; z++){
+		  if(str[4]==buk[z]){
+		    buk2 = z;
+		    break;}
+    }
+
+    for(z = 0;z <= 8; z++){
+		  if(str[5]==num[z]){
+		    num2 = z;
+		    break;}
+}
+
+        temp = a[num1][buk1];
+        a[num1][buk1] = a[num2][buk2];
+        a[num2][buk2] = temp;
+        for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+			}
+}
+
+
 		print(a);
-		if(str[0] == 'a' || str[0] == 'b' || str[0] == 'c' || str[0] == 'd' || str[0] == 'e' || str[0] == 'f' || str[0] == 'g' || str[0] == 'h')
-		pawn(a,str);
-		
-		
+
+
 }
 
 

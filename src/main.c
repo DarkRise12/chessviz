@@ -7,6 +7,11 @@ int main()
   char a[10][10];
   board(a);
   print(a);
-  move(a);
-  return 0;
+  while (true)
+    {
+        scanf ("%s", str);
+        if (strcmp(str, "stop") == 0) break;
+        if (!move(a, str)) printf ("Error!\n");
+    }
+    return 0;
 }
