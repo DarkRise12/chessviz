@@ -5,7 +5,7 @@ test: bin/main-test
 build/main-test.o: test/main.c build
 	gcc -std=c99 -I thirdparty -I scr -c test/main.c -o build/main-test.o
 
-build/main.o: src/main.c 
+build/main.o: src/main.c build
 	gcc -std=c99 -Wall -Werror -c src/main.c -o build/main.o
 
 build/board.o: src/board.c

@@ -6,36 +6,36 @@ char a[9][9];
 
 CTEST(Syntax, Correct_Syntax_Check)
 {
-	bool result = moveboard(a, "e12-e4");
+	bool result = move(a, "e12-e4");
 	ASSERT_FALSE(result);
 }
 
 CTEST(Syntax, Incorrect_Syntax_Check)
 {
-	bool result = moveboard(a, "b22-b4");
+	bool result = move(a, "b22-b4");
 	ASSERT_FALSE(result);
 }
 
 CTEST (Syntax, Incorrect_Figure_Move)
 {
-	bool result = moveboard(a, "c1-c3");
+	bool result = move(a, "c1-c3");
 	ASSERT_FALSE(result);
 }
 
 CTEST (Syntax, Incorrect_Movemet_Split)
 {
-	bool result = moveboard(a, "d1-d3");
+	bool result = move(a, "d1-d3");
 	ASSERT_FALSE(result);
 }
 
 CTEST (Syntax, Incorrect_Syntax_Order)
 {
-	bool result = moveboard(a, "1e-3e");
+	bool result = move(a, "1e-3e");
 	ASSERT_FALSE(result);
 }
 
 int main (int argc, const char** argv)
 {
-	makeboard(a);
+	board(a);
 	return ctest_main(argc, argv);
 }
