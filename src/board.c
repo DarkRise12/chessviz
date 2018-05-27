@@ -74,7 +74,7 @@ bool isEmpty(char a)
 	else return false;
 }
 
-void move(char a[10][10], char str[]){
+bool move(char a[10][10], char str[]){
       FILE *fw = fopen("board.txt", "wt");
     char temp;
     char sym[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};

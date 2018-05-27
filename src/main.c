@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 #include "board.h"
 #include "board_print.h"
 
@@ -11,8 +13,9 @@ int main()
   while (true)
     {
         scanf ("%s", str);
-        if (strcmp(str, "stop") == 0) break;
-        if (!move(a, str)) printf ("Error!\n");
+        if(strcmp(str, "stop") == 0){break;}
+
+        if(!move(a, str)) {printf("Error!\n");}
     }
     return 0;
 }
