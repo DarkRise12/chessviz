@@ -5,6 +5,7 @@
 int main()
 {
   char a[10][10];
+  char str[7];
   board(a);
   print(a);
   while (true)

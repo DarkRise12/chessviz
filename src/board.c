@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include "board_print.h"
 
 
@@ -66,235 +67,102 @@ void board(char a[10][10]){
     a[7][7]='p';
     a[7][8]='p';
 }
+bool isEmpty(char a)
+{
+	if(a == ' ')
+		return true;
+	else return false;
+}
 
 void move(char a[10][10], char str[]){
-	char str[6];
-	int z,i,j;
-	char temp;
-	int num1 = 0;
-    int num2 = 0;
-    int buk1 = 0;
-    int buk2 = 0;
-	FILE *fw = fopen("log.txt","wt");
-
-	while(1){
-        fprintf(fw,"%s\n",str);
-
-		if(str[0] == 'Q' || str[0] == 'q'){
-            for(z = 0;z <= 8; z++){
-		  if(str[1]==buk[z]){
-		    buk1 = z;
-		    break;}
-    }
-
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
-    }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
+      FILE *fw = fopen("board.txt", "wt");
+    char temp;
+    char sym[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+    char num[] = {'1', '2', '3', '4', '5', '6', '7', '8'};
+    int i, j, d, y;
+    while(1)
+    {
+		fprintf(fw, "%s\n", str);
+        if ((int)str[0] >= 97 && (int)str[0] <= 104)
+        {
+            for(int m = 0; m < 8; m++)
             {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
+                if(str[0] == sym[m])
+                    j = 1 + m;
+                if(str[1] == num[m])
+                    i = 7 - m;
+                if(str[3] == sym[m])
+                    d = 1 + m;
+                if(str[4] == num[m])
+                    y = 7 - m;
+            }
+            if(!(j < 8 && j >= 0 && i < 8 && i >= 0 && d < 8 && d >= 0 && y < 8 && y >= 0))
+                return false;
+            else if((isEmpty(a[y][d]) && str[2] != '-') || (!(isEmpty(a[y][d])) &&
+				str[2] != 'x') || (a[i][j] != 'P' && a[i][j] != 'p'))
+				return false;
+        else
+        {
+			if(str[2] == 'x')
+			{
+				a[y][d] = a[i][j];
+				a[i][j] = ' ';
 			}
+			else
+			{
+				temp = a[i][j];
+			    a[i][j] = a[y][d];
+			    a[y][d] = temp;
+		    }
+
+		    j = 10; i = 10; d = 10; y = 10;
+		    print(a); return true;}
 		}
+    else
+    {
+    	for(int m = 0; m < 8; m++)
+	    {
+	      if(str[1] == sym[m])
+            j = 1 + m;
+	      if(str[2] == num[m])
+	        i = 7 - m;
+	      if(str[4] == sym[m])
+	        d = 1 + m;
+	      if(str[5] == num[m])
+	        y = 7 - m;
+	    }
+	    if(!(j < 8 && j >= 0 && i < 8 && i >= 0 && d < 8 && d >= 0 && y < 8 && y >= 0))
+	      return false;
+	    else if((isEmpty(a[y][d]) && str[3] != '-') || (!(isEmpty(a[y][d])) &&
+				str[3] != 'x'))
 
-		if(str[0] == 'K' || str[0] == 'k'){
-            for(z = 1;z <= 8; z++){
-		  if(str[1]==buk[z]){
-		    buk1 = z;
-		    break;}
+			return false;
+
+	    else if(((int)a[i][j] != ((int)str[0] + 32) && a[i][j] != str[0]) || a[i][j] == 'P' || a[i][j] == 'p') return false;
+	    else
+			{
+			    if(str[3] == 'x')
+                {
+                    a[y][d] = a[i][j];
+                    a[i][j] = ' ';
+                }
+                else
+                {
+                    temp = a[i][j];
+                    a[i][j] = a[y][d];
+                    a[y][d] = temp;
+                    for(i = 0; i < 9; i++)
+                    {
+                        for(j = 0; j < 9; j++)
+                        fprintf(fw, "%c ", a[i][j]);
+                        fprintf(fw, "\n");
+                    }
+                }
+                j = 10; i = 10; d = 10; y = 10;
+                print(a); return true;
+            }
     }
 
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
     }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
-            {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
-			}
-		}
-
-		if(str[0] == 'R' || str[0] == 'r'){
-            for(z = 0;z <= 8; z++){
-		  if(str[1]==buk[z]){
-		    buk1 = z;
-		    break;}
-    }
-
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
-    }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
-            {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
-			}
-		}
-
-		if(str[0] == 'B' || str[0] == 'b'){
-            for(z = 0;z <= 8; z++){
-		  if(str[1]==buk[z]){
-		    buk1 = z;
-		    break;}
-    }
-
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
-    }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
-            {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
-			}
-		}
-
-		if(str[0] == 'N' || str[0] == 'n'){
-            for(z = 0;z <= 8; z++){
-		  if(str[1]==buk[z]){
-		    buk1 = z;
-		    break;}
-    }
-
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
-    }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
-            {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
-			}
-		}
-if(str[0] == 'a' || str[0] == 'b' || str[0] == 'c' || str[0] == 'd' || str[0] == 'e' || str[0] == 'f' || str[0] == 'g' || str[0] == 'h'){
-    for(z = 0;z <= 8; z++){
-		  if(str[0]==buk[z]){
-		    buk1 = z;
-		    break;}
-    }
-
-	for(z = 0;z <= 8; z++){
-		  if(str[2]==num[z]){
-		    num1 = z;
-		    break;}
-	}
-    for(z = 0;z <= 8; z++){
-		  if(str[4]==buk[z]){
-		    buk2 = z;
-		    break;}
-    }
-
-    for(z = 0;z <= 8; z++){
-		  if(str[5]==num[z]){
-		    num2 = z;
-		    break;}
-}
-
-        temp = a[num1][buk1];
-        a[num1][buk1] = a[num2][buk2];
-        a[num2][buk2] = temp;
-        for(i = 0; i < 9; i++)
-            {
-                for(j = 0; j < 9; j++)
-                fprintf(fw, "%c ", a[i][j]);
-                fprintf(fw, "\n");
-			}
-}
-
-
-		print(a);
-
-
-}
-
-
     fclose(fw);
-	}
+}
