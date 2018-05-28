@@ -1,3 +1,4 @@
 language: C++
 compiler: g++
 script: make
+script: make test
