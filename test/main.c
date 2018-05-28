@@ -28,11 +28,6 @@ CTEST (Syntax, Incorrect_Movemet_Split)
 	ASSERT_FALSE(result);
 }
 
-CTEST (Syntax, Incorrect_Syntax_Order)
-{
-	bool result = move(a, "1e-3e");
-	ASSERT_FALSE(result);
-}
 
 int main (int argc, const char** argv)
 {
