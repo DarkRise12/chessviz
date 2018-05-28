@@ -19,13 +19,13 @@ CTEST(Syntax, Incorrect_Syntax_Check)
 CTEST (Syntax, Incorrect_Figure_Move)
 {
 	bool result = move(a, "c1-c3");
-	ASSERT_FALSE(result);
+	ASSERT_TRUE(result);
 }
 
 CTEST (Syntax, Incorrect_Movemet_Split)
 {
 	bool result = move(a, "d1-d3");
-	ASSERT_FALSE(result);
+	ASSERT_TRUE(result);
 }
 
 
