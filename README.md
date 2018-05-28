@@ -1,2 +1,0 @@
-# chessviz
-chessviz
